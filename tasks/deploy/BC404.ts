@@ -17,7 +17,7 @@ interface Args {
 
 async function action(args: Args, hre: HardhatRuntimeEnvironment) {
   const client = await hre.viem.getPublicClient();
-  const Flux404 = await hre.viem.deployContract('contracts/Flux404.sol:Flux404', [
+  const BC404 = await hre.viem.deployContract('contracts/BC404.sol:BC404', [
     args.name,
     args.symbol,
     args.address,
@@ -29,16 +29,16 @@ async function action(args: Args, hre: HardhatRuntimeEnvironment) {
     args.calculation,
   ]);
 
-  consola.success(`Flux404 deployed to: ${client.chain.blockExplorers?.default.url}/address/${Flux404.address}`);
+  consola.success(`BC404 deployed to: ${client.chain.blockExplorers?.default.url}/address/${BC404.address}`);
 }
 
-export default task('deploy:Flux404', 'Deploy Flux404 contract')
-  .addParam('name', 'The name of the Flux404 contract')
-  .addParam('symbol', 'The symbol of the Flux404 contract')
-  .addParam('address', 'Admin address of the Flux404 contract')
-  .addParam('uri', 'The URI of the Flux404 contract')
+export default task('deploy:BC404', 'Deploy BC404 contract')
+  .addParam('name', 'The name of the BC404 contract')
+  .addParam('symbol', 'The symbol of the BC404 contract')
+  .addParam('address', 'Admin address of the BC404 contract')
+  .addParam('uri', 'The URI of the BC404 contract')
   .addParam('minted', 'The number of tokens minted')
-  .addParam('totalSupply', 'The total supply of the Flux404 contract')
+  .addParam('totalSupply', 'The total supply of the BC404 contract')
   .addOptionalParam('maxMintedCount', 'The maximum number of tokens that can be minted', 10000, types.int)
   .addOptionalParam('unit', 'Incremental Unit', 1, types.int)
   .addOptionalParam('calculation', 'Incremental Calculation', 1, types.int)
